@@ -1494,6 +1494,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 .projectNumber {
@@ -1509,6 +1511,8 @@
 .projectLinks {
   display: flex;
   gap: 0.75rem;
+  position: relative;
+  z-index: 100;
 }
 
 .projectLink {
@@ -1520,6 +1524,10 @@
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 100;
+  pointer-events: auto !important;
 }
 
 .projectLink:hover {
@@ -1572,7 +1580,6 @@
   right: 0;
   height: 100px;
   background: linear-gradient(180deg, transparent, rgba(0, 240, 255, 0.05));
-  pointer-events: none;
 }
 
 .projectBorder {
@@ -1581,6 +1588,7 @@
   border: 2px solid transparent;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
   transition: border-color 0.3s ease;
+  pointer-events: none;
 }
 
 .projectCard:hover .projectBorder {
