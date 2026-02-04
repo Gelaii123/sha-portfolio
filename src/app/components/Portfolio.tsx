@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import styles from "./Portfolio.module.css";
 import SplashCursor from "./SplashCursor";
 import LetterGlitch from "./LetterGlitch";
-import Image from "next/image";
+import emailjs from '@emailjs/browser';
 
 const Portfolio = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -156,6 +156,55 @@ const Portfolio = () => {
     e.stopPropagation();
     window.open(url, '_blank', 'noopener,noreferrer');
   };
+
+  useEffect(() => {
+  emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
+}, []);
+
+  const formRef = useRef<HTMLFormElement>(null);
+const [isSubmitting, setIsSubmitting] = useState(false);
+const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+const [toast, setToast] = useState<{
+  message: string;
+  type: "success" | "error";
+  visible: boolean;
+}>({
+  message: "",
+  type: "success",
+  visible: false,
+});
+const showToast = (message: string, type: "success" | "error") => {
+  setToast({ message, type, visible: true });
+
+  setTimeout(() => {
+    setToast(prev => ({ ...prev, visible: false }));
+  }, 3500);
+};
+
+
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  emailjs.sendForm(
+    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+    formRef.current!,
+    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+  )
+  .then(() => {
+    setSubmitStatus('success');
+    setIsSubmitting(false);
+    formRef.current?.reset();
+    showToast("Message sent successfully!", "success");
+  })
+  .catch((error) => {
+    console.error('EmailJS Error:', error);
+    setSubmitStatus('error');
+    setIsSubmitting(false);
+    showToast("Failed to send message. Please try again.", "error");
+  });
+};
 
   return (
     <div
@@ -832,11 +881,16 @@ const Portfolio = () => {
                 </a>
               </div>
             </div>
-            <form className={styles.contactForm}>
+            <form 
+            ref={formRef}
+            className={styles.contactForm}
+            onSubmit={handleSubmit}
+            >
               <div className={styles.formGroup}>
                 <label className={styles.formLabel}>Name</label>
                 <input
                   type="text"
+                  name="user_name"
                   placeholder="Your Name"
                   className={styles.formInput}
                   required
@@ -847,6 +901,7 @@ const Portfolio = () => {
                 <label className={styles.formLabel}>Email</label>
                 <input
                   type="email"
+                  name="user_email"
                   placeholder="Your Email"
                   className={styles.formInput}
                   required
@@ -857,6 +912,7 @@ const Portfolio = () => {
                 <label className={styles.formLabel}>Subject</label>
                 <input
                   type="text"
+                  name="subject"
                   placeholder="Project Inquiry"
                   className={styles.formInput}
                 />
@@ -866,14 +922,15 @@ const Portfolio = () => {
                 <label className={styles.formLabel}>Message</label>
                 <textarea
                   placeholder="Tell me about your project..."
+                  name="message"
                   className={styles.formTextarea}
                   rows={5}
                   required
                 ></textarea>
                 <div className={styles.inputGlow}></div>
               </div>
-              <button type="submit" className={styles.submitBtn}>
-                <span className={styles.btnText}>Send Message</span>
+              <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                <span className={styles.btnText}> {isSubmitting ? 'Sending...' : 'Send Message'}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -917,6 +974,12 @@ const Portfolio = () => {
         </div>
         <div className={styles.footerGlow}></div>
       </footer>
+      {toast.visible && (
+  <div className={`${styles.toast} ${styles[toast.type]}`}>
+    {toast.message}
+  </div>
+)}
+
     </div>
   );
 };

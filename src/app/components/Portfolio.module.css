@@ -2761,3 +2761,43 @@
     padding: 1rem;
   }
 }
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  color: white;
+  font-size: 0.95rem;
+  z-index: 9999;
+  animation: toastSlide 0.4s ease;
+  border: 1px solid transparent;
+}
+
+/* Success Style */
+.success {
+  background: rgba(0, 240, 150, 0.15);
+  border-color: rgba(0, 240, 150, 0.4);
+  box-shadow: 0 0 20px rgba(0, 240, 150, 0.2);
+}
+
+/* Error Style */
+.error {
+  background: rgba(255, 80, 80, 0.15);
+  border-color: rgba(255, 80, 80, 0.4);
+  box-shadow: 0 0 20px rgba(255, 80, 80, 0.2);
+}
+
+/* Animation */
+@keyframes toastSlide {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
