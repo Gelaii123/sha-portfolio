@@ -325,7 +325,7 @@ const Portfolio = () => {
               <div className={styles.imageWrapper}>
                 <div className={styles.imageFrame}>
                   <div className={styles.imagePlaceholder}>
-                    <img src="/me.png" alt="me" width="auto" height="auto" style={{objectFit:"cover"}} />
+                    <img src="/images/me.png" alt="me" width="auto" height="auto" style={{objectFit:"cover"}} />
                   </div>
                   <div className={styles.imageScanline}></div>
                 </div>
