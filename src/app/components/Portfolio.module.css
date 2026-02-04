@@ -2045,6 +2045,8 @@
 }
 
 /* Responsive Styles */
+
+/* Large Tablets and Small Desktops (992px and below) */
 @media (max-width: 992px) {
   .aboutContent {
     grid-template-columns: 1fr;
@@ -2055,20 +2057,44 @@
     order: -1;
   }
 
+  .imageWrapper {
+    max-width: 280px;
+  }
+
   .aboutStats {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .contactContent {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
   .whyWorkGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .skillCategoriesContainer {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .projectsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .certificationsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
 
+/* Tablets (768px and below) */
 @media (max-width: 768px) {
+  /* Navigation */
   .navLinks {
     position: fixed;
     top: 74px;
@@ -2082,6 +2108,11 @@
     transform: translateY(-150%);
     transition: transform 0.3s ease;
     border-bottom: 1px solid var(--border-color);
+    z-index: 999;
+  }
+
+  .portfolio.light .navLinks {
+    background: var(--bg-primary);
   }
 
   .navOpen {
@@ -2092,54 +2123,633 @@
     display: flex;
   }
 
+  /* Hero Section */
+  .heroText {
+    padding: 2rem 1.5rem;
+  }
+
+  .heroNameMain {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  .heroTitle {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
   .heroCta {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
   }
 
   .primaryBtn,
   .secondaryBtn {
     width: 100%;
     max-width: 280px;
+    padding: 0.875rem 1.5rem;
   }
 
+  .heroCorners {
+    inset: 1.5rem;
+  }
+
+  .cornerTL, .cornerTR, .cornerBL, .cornerBR {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Sections */
+  .sectionContainer {
+    padding: 4rem 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    margin-bottom: 3rem;
+  }
+
+  .sectionTitleNumber {
+    font-size: 1rem;
+  }
+
+  /* About Section */
   .aboutStats {
     flex-direction: column;
     gap: 1rem;
+    max-width: 400px;
+    margin: 2rem auto 0;
   }
 
-  .footerContent {
-    flex-direction: column;
-    text-align: center;
+  .statItem {
+    padding: 1.25rem;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .whyWorkSection {
+    padding: 2rem 1.5rem;
+  }
+
+  .whyWorkTitle {
+    font-size: 1.5rem;
+  }
+
+  .whyWorkGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .whyWorkItem {
+    padding: 1rem;
+  }
+
+  /* Skills Section */
+  .skillsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .skillCategoriesContainer {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .skillCategory {
+    padding: 1.5rem;
+  }
+
+  /* Projects Section */
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .projectCardInner {
+    padding: 1.5rem;
+  }
+
+  .projectImageContainer {
+    height: 180px;
+  }
+
+  .projectTitle {
+    font-size: 1.3rem;
+  }
+
+  /* Certifications Section */
+  .certificationsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .certCardInner {
+    padding: 2rem 1.5rem;
+  }
+
+  .certIcon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .certTitle {
+    font-size: 1.1rem;
+  }
+
+  /* Contact Section */
+  .contactForm {
+    padding: 1.5rem;
+  }
+
+  .formGroup {
+    margin-bottom: 0;
+  }
+
+  .submitBtn {
+    padding: 0.875rem 1.75rem;
+  }
+
+  /* Footer */
+  .footerContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .footerLeft {
+    align-items: center;
+  }
+
+  .footerRight {
+    justify-content: center;
+  }
+  .scrollIndicator{
+    display: none;
   }
 }
 
+/* Mobile Devices (480px and below) */
 @media (max-width: 480px) {
-  .sectionContainer {
-    padding: 4rem 1rem;
+  /* Navigation */
+  .navbar {
+    padding: 0.875rem 1rem;
   }
 
-  .navbar {
-    padding: 1rem;
+  .logoText {
+    font-size: 1.5rem;
+  }
+
+  .logoGlitch {
+    font-size: 1.5rem;
+  }
+
+  .navLinks {
+    top: 66px;
+    padding: 1.5rem;
+  }
+
+  .navLink {
+    font-size: 1rem;
+  }
+
+  .themeToggle {
+    padding: 0.4rem;
+  }
+
+  /* Hero Section */
+  .heroText {
+    padding: 1.5rem 1rem;
+  }
+
+  .heroTerminal {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .greeting {
+    font-size: 1rem;
+  }
+
+  .heroNameMain {
+    font-size: clamp(1.75rem, 12vw, 2.5rem);
+  }
+
+  .heroNameGlitch,
+  .heroNameGlitch2 {
+    font-size: clamp(1.75rem, 12vw, 2.5rem);
+  }
+
+  .heroTitle {
+    font-size: clamp(1rem, 6vw, 1.4rem);
+  }
+
+  .heroDescription {
+    font-size: 0.95rem;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .scrollIndicator {
+    bottom: 1.5rem;
+    font-size: 0.8rem;
   }
 
   .heroCorners {
     inset: 1rem;
   }
 
-  .projectCard {
-    margin: 0 -0.5rem;
+  .cornerTL, .cornerTR, .cornerBL, .cornerBR {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Sections */
+  .sectionContainer {
+    padding: 3rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+    margin-bottom: 2.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sectionTitleNumber {
+    font-size: 0.9rem;
+  }
+
+  .sectionTitle::after {
+    width: 60px;
+  }
+
+  /* About Section */
+  .imageWrapper {
+    max-width: 240px;
+  }
+
+  .imageFrame {
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  }
+
+  .imageDecor {
+    top: 10px;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  }
+
+  .aboutTerminal {
+    border-radius: 6px;
+  }
+
+  .terminalHeader {
+    padding: 0.6rem 0.875rem;
+  }
+
+  .terminalDot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .terminalTitle {
+    font-size: 0.75rem;
+  }
+
+  .terminalBody {
+    padding: 1.25rem;
+  }
+
+  .aboutSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .aboutDescription {
+    font-size: 0.95rem;
+  }
+
+  .serviceItem {
+    font-size: 0.9rem;
+  }
+
+  .aboutStats {
+    gap: 0.875rem;
+  }
+
+  .statItem {
+    padding: 1rem;
+  }
+
+  .statNumber {
+    font-size: 1.75rem;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
   }
 
   .whyWorkSection {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
   }
 
+  .whyWorkTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .whyWorkItem {
+    padding: 0.875rem 1rem;
+  }
+
+  .whyWorkIcon {
+    font-size: 1.1rem;
+  }
+
+  /* Skills Section */
+  .skillItem {
+    padding: 1.25rem;
+    gap: 0.875rem;
+  }
+
+  .skillIcon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  .skillName {
+    font-size: 0.95rem;
+  }
+
+  .skillPercent {
+    font-size: 0.85rem;
+  }
+
+  .skillBar {
+    height: 5px;
+  }
+
+  .skillGlow {
+    width: 8px;
+    height: 8px;
+  }
+
+  .skillCategory {
+    padding: 1.25rem;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .categoryTitle {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .techTag {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  /* Projects Section */
+  .projectCard {
+    margin: 0;
+  }
+
+  .projectCardInner {
+    padding: 1.25rem;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  }
+
+  .projectImageContainer {
+    height: 160px;
+    margin-bottom: 1.25rem;
+  }
+
+  .projectImagePlaceholder svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .projectImageText {
+    font-size: 0.85rem;
+  }
+
+  .projectHeader {
+    margin-bottom: 1.25rem;
+  }
+
+  .projectNumber {
+    font-size: 1.75rem;
+  }
+
+  .projectLink {
+    width: 36px;
+    height: 36px;
+  }
+
+  .projectLink svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .projectTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .projectDescription {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .projectTag {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .projectBorder {
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  }
+
+  /* Certifications Section */
+  .certCardInner {
+    padding: 1.75rem 1.25rem;
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  }
+
+  .certIcon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.25rem;
+  }
+
+  .certIcon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .certTitle {
+    font-size: 1rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .certIssuer {
+    font-size: 0.95rem;
+  }
+
+  .certDate {
+    font-size: 0.85rem;
+  }
+
+  /* Contact Section */
+  .contactTerminal {
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+  }
+
+  .contactDescription {
+    font-size: 0.95rem;
+  }
+
+  .contactSubtext {
+    font-size: 0.95rem;
+  }
+
+  .contactDetails {
+    gap: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contactItem {
+    font-size: 0.95rem;
+  }
+
+  .contactItemIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contactItemIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .socialLinks {
+    gap: 0.875rem;
+  }
+
+  .socialLink {
+    width: 44px;
+    height: 44px;
+  }
+
+  .socialLink svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contactForm {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .formLabel {
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+
+  .formTextarea {
+    min-height: 100px;
+  }
+
+  .submitBtn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .submitBtn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footerLogo {
+    font-size: 1.1rem;
+  }
+
+  .footerText {
+    font-size: 0.85rem;
+  }
+
+  .copyright {
+    font-size: 0.85rem;
+  }
+
+  .footerGlow {
+    width: 150px;
+  }
+}
+
+/* Extra Small Devices (360px and below) */
+@media (max-width: 360px) {
   .heroText {
-    padding: 1.5rem;
+    padding: 1.25rem 0.875rem;
+  }
+
+  .heroNameMain {
+    font-size: clamp(1.5rem, 14vw, 2rem);
+  }
+
+  .heroTitle {
+    font-size: clamp(0.9rem, 7vw, 1.2rem);
+  }
+
+  .sectionContainer {
+    padding: 2.5rem 0.875rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.3rem, 9vw, 1.75rem);
+  }
+
+  .whyWorkSection {
+    padding: 1.25rem 0.875rem;
+  }
+
+  .skillCategory {
+    padding: 1rem;
+  }
+
+  .projectCardInner {
+    padding: 1rem;
+  }
+
+  .certCardInner {
+    padding: 1.5rem 1rem;
+  }
+
+  .contactForm {
+    padding: 1rem;
   }
 }
