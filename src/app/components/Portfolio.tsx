@@ -11,6 +11,18 @@ const Portfolio = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+    const [isDesktop, setIsDesktop] = useState(true);
+
+  // Check screen size for SplashCursor
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth > 1024); // Hide on tablet (1024px) and below
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute(
@@ -99,7 +111,7 @@ const Portfolio = () => {
         "Supabase",
         "CSS",
         "Responsive Web Design",
-        "Vercel DEployment",
+        "Vercel Deployment",
         "Git Version Control",
       ],
       link: "https://clbc.netlify.app/",
@@ -110,7 +122,8 @@ const Portfolio = () => {
       title: "HRIS Project",
       description:
         "Human Resource Information System with employee management, attendance tracking, and payroll features.",
-      tech: ["Laravel", "React", "MySQL", "Tailwind", "Typescript"],
+      tech: ["Laravel", "React", "MySQL", "Tailwind", "Typescript","Responsive Web Design",
+        "Git Version Control"],
       link: "https://hris.hipe.asia/",
       image: "/images/projects/proj-hris.png",
       color: "magenta",
@@ -210,7 +223,7 @@ const handleSubmit = (e: React.FormEvent) => {
     <div
       className={`${styles.portfolio} ${isDarkMode ? styles.dark : styles.light}`}
     >
-      <SplashCursor />
+     {isDesktop && <SplashCursor />}
 
       {/* Progress Bar */}
       <div className={styles.progressContainer}>
@@ -824,6 +837,8 @@ const handleSubmit = (e: React.FormEvent) => {
                   href="https://github.com/Gelaii123"
                   className={styles.socialLink}
                   aria-label="GitHub"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -843,6 +858,8 @@ const handleSubmit = (e: React.FormEvent) => {
                   href="https://www.linkedin.com/in/angel-kisha-arcenal-b948152ba/"
                   className={styles.socialLink}
                   aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -864,6 +881,8 @@ const handleSubmit = (e: React.FormEvent) => {
                   href="https://www.upwork.com/freelancers/~017e57803a1de1ebf5?mp_source=share"
                   className={styles.socialLink}
                   aria-label="Upwork"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
